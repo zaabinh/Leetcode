@@ -25,12 +25,16 @@ class Solution {
                 // 1 candy is enough
                 ans++;
             } 
+            // If the current rating decrease
             else {
+                // No increase
                 up = 0;
+                // Increase down
                 down++;
-
+                // Update ans
                 ans += 1 + down;
 
+                // 
                 if (down <= peak) {
                     ans--;
                 }
