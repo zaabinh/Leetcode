@@ -1,26 +1,29 @@
 class Solution {
     public String convert(String s, int numRows) {
-        if(numRows == 1 || numRows > s.length()) {
+        int n = s.length();
+
+        if (numRows == 1 || numRows >= n) {
             return s;
         }
-        char[] st = s.toCharArray();
-        char[] ans = new char[st.length];
-        int ansIndex = 0;
 
+        char[] ans = new char[n];
+        int k = 0;
         int cycle = 2 * numRows - 2;
 
-        for(int i = 0; i < numRows; i++) {
-            for(int j = i; j < st.length; j += cycle) {
-                ans[ansIndex++] = st[j];
-                int dig = j + cycle - 2 * i;
-                if(i > 0 && i < numRows - 1 && dig < st.length) {
-                    ans[ansIndex++] = st[dig];
+        for (int row = 0; row < numRows; row++) {
+            for (int j = row; j < n; j += cycle) {
+                ans[k++] = s.charAt(j);
+
+                if (row != 0 && row != numRows - 1) {
+                    int diagonal = j + cycle - 2 * row;
+
+                    if (diagonal < n) {
+                        ans[k++] = s.charAt(diagonal);
+                    }
                 }
             }
         }
-
-        return new String(ans, 0, ansIndex);
-        
+        return new String(ans);
     }
 }
 
