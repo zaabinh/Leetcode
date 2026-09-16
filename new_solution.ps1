@@ -84,5 +84,6 @@ foreach ($lang in $targets) {
 
     [System.IO.File]::WriteAllText($runPath, $tpl.RunScript)
 
+    Set-Location $targetDir
     Write-Host "[$lang] ready at $targetDir" -ForegroundColor Green
 }
