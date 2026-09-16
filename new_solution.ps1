@@ -46,8 +46,13 @@ public class Main {
 }
 '@
         RunScript = @'
-javac Main.java
-java Main
+# Usage: .\run_script.ps1 [FileName]   (defaults to Main, e.g. BestSolution)
+param(
+    [string]$Name = "Main"
+)
+
+javac "$Name.java"
+java $Name
 '@
     }
     "Python" = @{
@@ -62,7 +67,12 @@ if __name__ == "__main__":
     s = Solution()
 '@
         RunScript = @'
-python solution.py
+# Usage: .\run_script.ps1 [FileName]   (defaults to solution, e.g. best_solution)
+param(
+    [string]$Name = "solution"
+)
+
+python "$Name.py"
 '@
     }
 }
